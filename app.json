@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "AwesomeProject",
+    "name": "KhanaKhazana",
     "slug": "AwesomeProject",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.shashwat.kn.AwesomeProject"
     },
     "web": {
       "favicon": "./assets/favicon.png"
