@@ -6,6 +6,7 @@ import CommonStyles from '../Constants/StyleConstants';
 import { base64encoding, clientId, GRANTED, ImageUploadedSuccessfully, orderId, uploadApi } from '../Constants/Constants';
 import CameraView from '../Components/CameraView';
 import CameraPreview from '../Components/CameraPreview';
+import LoadingView from '../Components/LoadingView';
 
 interface Props {
   navigation: any
@@ -24,12 +25,15 @@ export default class CameraScreen extends React.Component<Props> {
   };
 
   _takePicture = async () => {
-    if (!this.camera) {return}
-    const photo = await this.camera.takePictureAsync()
-    this.setState({photoUri: photo.uri})
+    this.processImage()
   }
 
-  _uploadImageToServer = async () =>  {
+  private async processImage() {
+    if (!this.camera) {return}
+    const photo = await this.camera.takePictureAsync({skipProcessing: true})
+    this.setState({processingImage: false, photoUri: photo.uri})
+  }
+  private async uploadImageToServer()  {
 
     const base64data = await FileSystem.readAsStringAsync(this.state.photoUri, { encoding: base64encoding });
     const formData = new FormData();
@@ -54,7 +58,7 @@ export default class CameraScreen extends React.Component<Props> {
 
   _uploadPicture = () => {
     this.setState({uploading: true})
-     this._uploadImageToServer()
+     this.uploadImageToServer()
      
   }
 
@@ -73,7 +77,7 @@ export default class CameraScreen extends React.Component<Props> {
         return <Text>No access to camera</Text>;
       }
       if (this.state.uploading) {
-        return <UploadView/>
+        return <LoadingView text={'Uploading Image. Please wait.....'}/>
       }
       if (this.state.photoUri !== '') {
         return <CameraPreview uri={this.state.photoUri} retakePicture={this._retakePicture} uploadPicture={this._uploadPicture} />
@@ -84,13 +88,3 @@ export default class CameraScreen extends React.Component<Props> {
     }
 }
 
-class UploadView extends React.Component {
-  render() {
-    return (
-      <View style={CommonStyles.indicatorStyle}>
-        <ActivityIndicator size="large" color="#grey" />
-        <Text>Uploading Image. Please wait.....</Text>
-      </View>
-    )
-  }
-}
