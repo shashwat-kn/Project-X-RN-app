@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, ToastAndroid } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as FileSystem from 'expo-file-system';
 import { base64encoding, clientId, GRANTED, ImageUploadedSuccessfully, orderId, uploadApi } from '../Constants/Constants';
@@ -46,7 +46,7 @@ export default class CameraScreen extends React.Component<Props> {
       method: 'POST',
       body: formData
     });
-    Alert.alert(ImageUploadedSuccessfully)
+    ToastAndroid.show(ImageUploadedSuccessfully, ToastAndroid.SHORT)
     this.props.navigation.goBack()
 
   }
