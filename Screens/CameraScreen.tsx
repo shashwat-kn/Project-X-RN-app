@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, Alert, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as FileSystem from 'expo-file-system';
-import CommonStyles from '../Constants/StyleConstants';
 import { base64encoding, clientId, GRANTED, ImageUploadedSuccessfully, orderId, uploadApi } from '../Constants/Constants';
 import CameraView from '../Components/CameraView';
 import CameraPreview from '../Components/CameraPreview';
