@@ -71,6 +71,43 @@ const CommonStyles = StyleSheet.create({
     separatorStyle: {
         borderBottomColor: 'gray',
         borderBottomWidth: 1,
+    },
+    textInput: {
+        height: 50,
+        flex: 1,
+        padding: 10
+    },
+    inputView: {
+        borderColor: 'gray',
+        borderWidth: 1,
+        height: 45,
+        marginBottom: 20,
+        alignItems: "center",
+    },
+    loginScreen: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 50
+
+    },
+    loginTextStyle: {
+        marginBottom: 20,
+        fontSize: 14
+    },
+    loginError: {
+        marginTop: 20,
+        color: 'red'
+    },
+    footerStyle: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: 25,
+        marginVertical: 10
+    },
+    footerText: {
+        color: 'gray',
+        fontSize: 12
     }
 });
 
