@@ -12,25 +12,25 @@ export default class CameraPreview extends React.Component<CameraPreviewProps> {
     render() {
         return (
             <View style={CommonStyles.cameraBackground}>
-              <ImageBackground
-                source={{uri: this.props.uri}}
-                style={{
-                  flex: 1
-                }}
-              />
-              <View style={CommonStyles.previewStyle}>
-                <Button
-                  color={redColor}
-                  title={retry}
-                  onPress={this.props.retakePicture}
+                <ImageBackground
+                    source={{ uri: this.props.uri }}
+                    style={{
+                        flex: 1
+                    }}
                 />
-                <Button
-                  color={greenColor}
-                  title={uploadPhoto}
-                  onPress={this.props.uploadPicture}
-                />
-              </View>
+                <View style={CommonStyles.previewStyle}>
+                    <Button
+                        color={redColor}
+                        title={retry}
+                        onPress={this.props.retakePicture}
+                    />
+                    <Button
+                        color={greenColor}
+                        title={uploadPhoto}
+                        onPress={this.props.uploadPicture}
+                    />
+                </View>
             </View>
-          )
+        )
     }
 }

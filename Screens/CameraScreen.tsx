@@ -1,4 +1,4 @@
-import React from 'react';  
+import React from 'react';
 import { View, Text, Alert, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as FileSystem from 'expo-file-system';
@@ -28,11 +28,11 @@ export default class CameraScreen extends React.Component<Props> {
   }
 
   private async processImage() {
-    if (!this.camera) {return}
-    const photo = await this.camera.takePictureAsync({skipProcessing: true})
-    this.setState({processingImage: false, photoUri: photo.uri})
+    if (!this.camera) { return }
+    const photo = await this.camera.takePictureAsync({ skipProcessing: true })
+    this.setState({ processingImage: false, photoUri: photo.uri })
   }
-  private async uploadImageToServer()  {
+  private async uploadImageToServer() {
 
     const base64data = await FileSystem.readAsStringAsync(this.state.photoUri, { encoding: base64encoding });
     const formData = new FormData();
@@ -52,38 +52,38 @@ export default class CameraScreen extends React.Component<Props> {
   }
 
   _retakePicture = () => {
-    this.setState({photoUri: ''})
+    this.setState({ photoUri: '' })
   }
 
   _uploadPicture = () => {
-    this.setState({uploading: true})
-     this.uploadImageToServer()
-     
+    this.setState({ uploading: true })
+    this.uploadImageToServer()
+
   }
 
   _cameraRef = (ref: any) => {
     this.camera = ref
   }
 
-    componentDidMount() {
-      this._getCameraAsync()
+  componentDidMount() {
+    this._getCameraAsync()
+  }
+  render() {
+    if (this.state.hasPermission === null) {
+      return <View />;
     }
-    render() {
-      if (this.state.hasPermission === null) {
-        return <View/>;
-      }
-      if (this.state.hasPermission === false) {
-        return <Text>No access to camera</Text>;
-      }
-      if (this.state.uploading) {
-        return <LoadingView text={'Uploading Image. Please wait.....'}/>
-      }
-      if (this.state.photoUri !== '') {
-        return <CameraPreview uri={this.state.photoUri} retakePicture={this._retakePicture} uploadPicture={this._uploadPicture} />
-      }
-      return (
-        <CameraView takePicture={this._takePicture} cameraref={this._cameraRef}/>
-        );
+    if (this.state.hasPermission === false) {
+      return <Text>No access to camera</Text>;
     }
+    if (this.state.uploading) {
+      return <LoadingView text={'Uploading Image. Please wait.....'} />
+    }
+    if (this.state.photoUri !== '') {
+      return <CameraPreview uri={this.state.photoUri} retakePicture={this._retakePicture} uploadPicture={this._uploadPicture} />
+    }
+    return (
+      <CameraView takePicture={this._takePicture} cameraref={this._cameraRef} />
+    );
+  }
 }
 

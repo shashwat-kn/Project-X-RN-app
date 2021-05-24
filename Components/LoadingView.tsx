@@ -8,11 +8,11 @@ interface LoadingViewProps {
 
 export default class LoadingView extends React.Component<LoadingViewProps> {
     render() {
-      return (
-        <View style={CommonStyles.indicatorStyle}>
-          <ActivityIndicator size="large" color="#grey" />
-          <Text>{this.props.text}</Text>
-        </View>
-      )
+        return (
+            <View style={CommonStyles.indicatorStyle}>
+                <ActivityIndicator size="large" color="#grey" />
+                <Text>{this.props.text}</Text>
+            </View>
+        )
     }
-  }
+}

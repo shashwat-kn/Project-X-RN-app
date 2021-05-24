@@ -3,28 +3,28 @@ import { StyleSheet } from 'react-native';
 const CommonStyles = StyleSheet.create({
     flex_1: {
         flex: 1
-     },
-     riderItem: {
+    },
+    riderItem: {
         padding: 24,
         justifyContent: 'space-between',
         flexDirection: 'column'
     },
     riderButton: {
-        flexDirection:'row', 
-        justifyContent:'space-between', 
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         paddingTop: 16
     },
     donorAddress: {
-        fontSize: 12, 
-        color: 'gray', 
+        fontSize: 12,
+        color: 'gray',
         paddingTop: 4
     },
     riderTitle: {
-        fontSize: 16, 
-        fontWeight:'bold'
+        fontSize: 16,
+        fontWeight: 'bold'
     },
     donorName: {
-        fontSize: 14, 
+        fontSize: 14,
         paddingTop: 4
     },
     camera: {
@@ -42,9 +42,9 @@ const CommonStyles = StyleSheet.create({
         borderWidth: 4,
         alignSelf: 'center'
     },
-      camerButton: {
+    camerButton: {
         alignSelf: 'center'
-      },
+    },
     text: {
         fontSize: 18,
         color: 'white',
@@ -58,11 +58,11 @@ const CommonStyles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     indicatorStyle: {
-        flex:1,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
     },
-    cameraBackground: { 
+    cameraBackground: {
         backgroundColor: 'transparent',
         flex: 1,
         width: '100%',
@@ -71,7 +71,7 @@ const CommonStyles = StyleSheet.create({
     separatorStyle: {
         borderBottomColor: 'gray',
         borderBottomWidth: 1,
-      }
-  });
+    }
+});
 
-  export default CommonStyles;
+export default CommonStyles;
